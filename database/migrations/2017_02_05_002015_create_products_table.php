@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->longText('description');
             $table->string('image');
+            $table->integer('weight');
             $table->boolean('available');
             $table->timestamps();
         });
