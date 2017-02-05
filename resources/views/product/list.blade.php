@@ -1,5 +1,9 @@
 @extends('index')
 
+@section('title')
+    Product
+@endsection
+
 @section('content')
 
     @foreach($products as $item)

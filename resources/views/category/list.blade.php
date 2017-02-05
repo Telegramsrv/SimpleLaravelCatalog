@@ -1,5 +1,9 @@
 @extends('index')
 
+@section('title')
+    Category page
+@endsection
+
 @section('content')
 
     @foreach($categories as $category)

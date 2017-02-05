@@ -8,6 +8,11 @@ class News extends Model
 {
     public function getNews()
     {
-        return $this->orderBy('news_id','desc');
+        return $this->orderBy('news_id', 'desc')->get();
+    }
+
+    public function getOneNews($slug)
+    {
+        return $this->where('slug',$slug)->firstOrFail();
     }
 }

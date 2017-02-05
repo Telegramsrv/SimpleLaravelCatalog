@@ -10,7 +10,16 @@ class NewsController extends MainController
 
     public function getAllNews(News $news)
     {
-        dd($news->getNews());
+        $this->data['news'] = $news->getNews();
+        return view('news.index',$this->data);
     }
+
+    public function getSingleNews($slug, News $news)
+    {
+        $this->data['article'] = $news->getOneNews($slug);
+        return view('news.single',$this->data);
+    }
+
+
 
 }
