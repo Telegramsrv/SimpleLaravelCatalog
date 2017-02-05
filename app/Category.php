@@ -8,7 +8,7 @@ class Category extends Model
 {
 	public function getAvailableProducts()
 	{
-		return $this->products()->available()->orderBy('weight')->get();
+		return $this->products()->available()->orderBy('weight');
 	}
 
 	public function products()
@@ -23,6 +23,6 @@ class Category extends Model
 
 	public function getCategoryBySlug($slug)
 	{
-		return $this->where('slug',$slug)->firstOrFail()->getAvailableProducts();
+		return $this->where('slug',$slug)->firstOrFail()->getAvailableProducts()->paginate(12);
 	}
 }

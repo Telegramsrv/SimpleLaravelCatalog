@@ -13,12 +13,12 @@ class PagesTableSeeder extends Seeder
     {
         DB::table('pages')->insert([
             'title' => 'first_title',
-            'slug' => '=>',
+            'slug' => 'first_page',
             'body' => 'first_body',
         ]);
         DB::table('pages')->insert([
             'title' => 'sec_title',
-            'slug' => '=>',
+            'slug' => 'second_page',
             'body' => 'sec_body',
         ]);
     }

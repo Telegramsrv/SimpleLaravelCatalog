@@ -9,5 +9,6 @@ class MainController extends Controller
     public function __contruct()
     {
     	$this->data = [];//All Controllers extends MainController
+	    //TODO add to $this->data nav bar
     }
 }

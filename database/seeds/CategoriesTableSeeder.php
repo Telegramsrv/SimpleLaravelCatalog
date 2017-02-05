@@ -13,16 +13,16 @@ class CategoriesTableSeeder extends Seeder
     {
 
         $categories = new \App\Category([
-            'name' => 'first_cat',
-            'slug' => '=>',
+            'name' => 'Frist category',
+            'slug' => 'first_cat',
             'weight' => '1',
         ]);
         $categories->save();
 
 
         DB::table('categories')->insert([
-            'name' => 'sec_cat',
-            'slug' => '=>',
+            'name' => 'Second category',
+            'slug' => 'sec_cat',
             'weight' => '2',
         ]);
 

@@ -14,12 +14,12 @@ class NewsTableSeeder extends Seeder
         DB::table('news')->insert([
             'title' => 'first_title',
             'body' => 'body',
-            'slug' => '=>',
+            'slug' => 'first_slug',
         ]);
         DB::table('news')->insert([
             'title' => 'sec_title',
             'body' => 'sec_body',
-            'slug' => '=>',
+            'slug' => 'sec_slug',
         ]);
     }
 }
