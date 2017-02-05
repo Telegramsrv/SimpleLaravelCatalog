@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/catalog', ['as' => 'catalog.index' , 'uses' =>'CatalogController@index']);
+Route::get('/catalog/{slug}', ['as' => 'catalog.slug' , 'uses' =>'CatalogController@listPorudcts']);
+Route::get('/product/{slug}', ['as' => 'product.slug' , 'uses' =>'CatalogController@getProduct']);
+Route::get('/products', ['as' => 'product.all' , 'uses' =>'CatalogController@getAllProduct']);
