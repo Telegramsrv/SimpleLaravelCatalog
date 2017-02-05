@@ -21,9 +21,9 @@ class CategoriesTableSeeder extends Seeder
 
 
         DB::table('categories')->insert([
-            'name' => 'sec_cat',
+            'name' => 'first_cat',
             'slug' => '=>',
-            'weight' => '2',
+            'weight' => '1',
         ]);
 
     }
