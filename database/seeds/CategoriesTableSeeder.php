@@ -13,17 +13,17 @@ class CategoriesTableSeeder extends Seeder
     {
 
         $categories = new \App\Category([
-            'name' => 'first_cat',
-            'slug' => '=>',
+            'name' => 'Frist category',
+            'slug' => 'first_cat',
             'weight' => '1',
         ]);
         $categories->save();
 
 
         DB::table('categories')->insert([
-            'name' => 'first_cat',
-            'slug' => '=>',
-            'weight' => '1',
+            'name' => 'Second category',
+            'slug' => 'sec_cat',
+            'weight' => '2',
         ]);
 
     }

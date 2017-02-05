@@ -23,7 +23,7 @@ class Product extends Model
 
 	public function getAllAvailable()
 	{
-		return $this->available()->orderBy('weight')->get();
+		return $this->available()->orderBy('weight')->paginate(15);
 	}
 
 	public function galery()
@@ -34,5 +34,15 @@ class Product extends Model
 	public function getGalery()
 	{
 		return $this->galery()->orderBy('weight')->get();
+	}
+
+	public function review()
+	{
+		return $this->hasMany('App\Review','product_id','product_id');
+	}
+
+	public function getReview()
+	{
+		return $this->review()->get();
 	}
 }

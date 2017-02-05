@@ -11,21 +11,25 @@ class CatalogController extends MainController
 
 	public function index(Category $categories)
 	{
-		dd($categories->getCategories());
+		$this->data['categories'] = $categories->getCategories();
+		return view('category.list',$this->data);
 	}
 
 	public function listPorudcts($slug, Category $categories)
 	{
-		dd($categories->getCategoryBySlug($slug));
+		$this->data['products'] = $categories->getCategoryBySlug($slug);
+		return view('product.list',$this->data);
 	}
 
 	public function getProduct($slug, Product $products)
 	{
-		dd($products->getProductBySlug($slug));
+		$this->data['product'] = $products->getProductBySlug($slug);
+		return view('product.index',$this->data);
 	}
 
 	public function getAllProduct(Product $products)
 	{
-		dd($products->getAllAvailable());
+		$this->data['products'] = $products->getAllAvailable();
+		return view('product.list',$this->data);
 	}
 }

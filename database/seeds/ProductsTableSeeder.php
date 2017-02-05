@@ -14,7 +14,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             'category_id' => 1,
             'name' => 'first_prod',
-            'slug' => '=>',
+            'slug' => 'first_prod',
             'description' => 'first_desc',
             'image' => '1.jpg',
             'weight' => 1,
@@ -23,7 +23,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             'category_id' => 1,
             'name' => 'sec_prod',
-            'slug' => '=>',
+            'slug' => 'sec_prod',
             'description' => 'sec_desc',
             'image' => '2.jpg',
             'weight' => 2,
