@@ -9,7 +9,7 @@
     @foreach($products as $item)
 
             <div class="col-md-3">
-                <a href="/product/{{$item->slug}}">
+                <a href="{{ route('product.slug',['slug' => $item->slug]) }}">
                     <img src="/uploads/product/small/{{$item->image}}">
                     <p>{{$item->name}}</p>
                 </a>

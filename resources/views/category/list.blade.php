@@ -10,7 +10,7 @@
 
         <div class="container">
             <div class="col-md-8">
-                <a href="/catalog/{{$category->slug}}"><h3>{{$category->name}}</h3></a>
+                <a href="{{ route('catalog.slug',['slug' => $category->slug]) }}"><h3>{{$category->name}}</h3></a>
             </div>
         </div>
 
