@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+	protected $primaryKey = 'category_id';
+	protected $fillable = ['name', 'slug', 'weight'];
+
 	public function getAvailableProducts()
 	{
 		return $this->products()->available()->orderBy('weight');
@@ -23,6 +26,9 @@ class Category extends Model
 
 	public function getCategoryBySlug($slug)
 	{
-		return $this->where('slug',$slug)->firstOrFail()->getAvailableProducts()->paginate(12);
+		return $this->where('slug',$slug)
+			->firstOrFail()
+			->getAvailableProducts()
+			->paginate(12);
 	}
 }

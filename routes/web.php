@@ -24,6 +24,3 @@ Route::get('/news/{slug}', [
     'as' => 'news.slug',
     'uses' => 'NewsController@getSingleNews'
 ]);
-
-//TODO add middleware auth
-Route::resource('/admin/category','Admin\AdminCategoryController');

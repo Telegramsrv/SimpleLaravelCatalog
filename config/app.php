@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
     ],
 
