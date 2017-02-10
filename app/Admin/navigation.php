@@ -34,6 +34,16 @@ return [
         'url'   => route('admin.information'),
     ],
 
+    [
+    	'title' => 'Products',
+	    'pages' => [
+		    (new Page(\App\Product::class))
+			    ->setPriority(0),
+		    (new Page(\App\Gallery::class))
+			    ->setPriority(100)
+	    ]
+    ]
+
     // Examples
     // [
     //    'title' => 'Content',
