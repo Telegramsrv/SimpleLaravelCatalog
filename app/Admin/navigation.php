@@ -37,10 +37,14 @@ return [
     [
     	'title' => 'Products',
 	    'pages' => [
-		    (new Page(\App\Product::class))
+		    (new Page(\App\Category::class))
 			    ->setPriority(0),
+		    (new Page(\App\Product::class))
+			    ->setPriority(50),
 		    (new Page(\App\Gallery::class))
-			    ->setPriority(100)
+			    ->setPriority(100),
+            (new Page(\App\Review::class))
+	            ->setPriority(150)
 	    ]
     ]
 
