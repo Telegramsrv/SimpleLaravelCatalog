@@ -6,6 +6,7 @@ use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
+use AdminColumnEditable;
 use App\Category;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
@@ -42,16 +43,17 @@ class Product extends Section
      */
     public function onDisplay()
     {
-	    return AdminDisplay::table()->with('category')
-	                       ->setHtmlAttribute('class', 'table-primary')
-	                       ->setColumns(
-		                       AdminColumn::text('name', 'Name'),
-		                       AdminColumn::text('slug', 'Slug')->setWidth('250px'),
-		                       AdminColumn::text('category.name','Category'),
-		                       AdminColumn::text('weight', 'Weight')->setWidth('30px'),
-		                       AdminColumn::image('image', 'image')->setWidth('50px'),
-		                       AdminColumn::text('available','Available')->setWidth('5px')
-	                       )->paginate(20);
+    	$display = AdminDisplay::datatables()->with('category')
+	                           ->setHtmlAttribute('class', 'table-primary');
+    	$display->setColumns(
+	               AdminColumn::text('name', 'Name'),
+	               AdminColumn::text('slug', 'Slug')->setWidth('250px'),
+	               AdminColumn::text('category.name','Category'),
+	               AdminColumn::text('weight', 'Weight')->setWidth('30px'),
+	               AdminColumn::image('image', 'image')->setWidth('50px'),
+	               AdminColumnEditable::checkbox('available','Available')->setWidth('50px')
+	    );
+	    return $display;
     }
 
     /**

@@ -42,13 +42,14 @@ class Gallery extends Section
      */
     public function onDisplay()
     {
-	    return AdminDisplay::table()->with('product')
-	                       ->setHtmlAttribute('class', 'table-primary')
-	                       ->setColumns(
-		                       AdminColumn::text('product.name','Product'),
-		                       AdminColumn::text('weight', 'Weight')->setWidth('30px'),
-		                       AdminColumn::image('image', 'image')->setWidth('50px')
-	                       )->paginate(20);
+	    $display = AdminDisplay::datatables()->with('product')
+	                       ->setHtmlAttribute('class', 'table-primary');
+		$display->setColumns(
+		           AdminColumn::text('product.name','Product'),
+		           AdminColumn::text('weight', 'Weight')->setWidth('30px'),
+		           AdminColumn::image('image', 'image')->setWidth('50px')
+		);
+		return $display;
     }
 
     /**

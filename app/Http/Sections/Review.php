@@ -42,14 +42,15 @@ class Review extends Section
      */
     public function onDisplay()
     {
-	    return AdminDisplay::table()->with('product')
-	                       ->setHtmlAttribute('class', 'table-primary')
-	                       ->setColumns(
-		                       AdminColumn::text('user_name','User name'),
-		                       AdminColumn::text('email','Email'),
-		                       AdminColumn::text('product.name','Product'),
-	                           AdminColumn::text('star','Star')->setWidth('10px')
-	                       )->paginate(20);
+	    $display = AdminDisplay::datatables()->with('product')
+	                       ->setHtmlAttribute('class', 'table-primary');
+	    $display->setColumns(
+	               AdminColumn::text('user_name','User name'),
+	               AdminColumn::text('email','Email'),
+	               AdminColumn::text('product.name','Product'),
+	               AdminColumn::text('star','Star')->setWidth('10px')
+	    );
+	    return $display;
     }
 
     /**
