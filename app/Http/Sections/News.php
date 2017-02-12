@@ -2,6 +2,11 @@
 
 namespace App\Http\Sections;
 
+use AdminColumn;
+use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
+use AdminColumnEditable;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
@@ -25,7 +30,7 @@ class News extends Section
     /**
      * @var string
      */
-    protected $title;
+    protected $title = 'News';
 
     /**
      * @var string
@@ -37,7 +42,15 @@ class News extends Section
      */
     public function onDisplay()
     {
-        // todo: remove if unused
+	    $display = AdminDisplay::datatables()
+	                           ->setHtmlAttribute('class', 'table-primary');
+	    $display->setColumns(
+		    AdminColumn::text('title', 'Title'),
+		    AdminColumn::text('slug', 'Slug')->setWidth('250px'),
+		    AdminColumn::text('created_at','Created at')->setWidth('200px'),
+		    AdminColumn::text('updated_at','Updated at')->setWidth('200px')
+	    );
+	    return $display;
     }
 
     /**
@@ -47,7 +60,15 @@ class News extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+	    return AdminForm::panel()->addBody(
+		    [
+			    AdminFormElement::text('title', 'Title')->required(),
+			    AdminFormElement::text('slug', 'Slug')->required(),
+			    AdminFormElement::datetime('created_at', 'Created at'),
+			    AdminFormElement::datetime('updated_at', 'Updated at'),
+			    AdminFormElement::textarea('body','Body')
+		    ]
+	    );
     }
 
     /**

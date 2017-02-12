@@ -46,7 +46,21 @@ return [
             (new Page(\App\Review::class))
 	            ->setPriority(150)
 	    ]
-    ]
+    ],
+
+    [
+    	'title' => 'Content',
+        'pages' => [
+	        (new Page(\App\News::class))
+		        ->setPriority(0),
+	        (new Page(\App\Menu::class))
+                ->setPriority(50),
+	        (new Page(\App\Page::class))
+                ->setPriority(100),
+	        (new Page(\App\Slider::class))
+		        ->setPriority(150)
+        ]
+    ],
 
     // Examples
     // [

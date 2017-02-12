@@ -2,6 +2,10 @@
 
 namespace App\Http\Sections;
 
+use AdminColumn;
+use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
@@ -25,7 +29,7 @@ class Menu extends Section
     /**
      * @var string
      */
-    protected $title;
+    protected $title = 'Menu';
 
     /**
      * @var string
@@ -37,7 +41,14 @@ class Menu extends Section
      */
     public function onDisplay()
     {
-        // todo: remove if unused
+	    $display = AdminDisplay::table()
+	                           ->setHtmlAttribute('class', 'table-primary');
+	    $display->setColumns(
+		    AdminColumn::text('name','Name'),
+		    AdminColumn::text('url', 'URL')->setWidth('100px'),
+		    AdminColumn::text('weight', 'weight')->setWidth('50px')
+	    );
+	    return $display;
     }
 
     /**
@@ -47,7 +58,13 @@ class Menu extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+	    return AdminForm::panel()->addBody(
+		    [
+			    AdminFormElement::text('name','Name')->required(),
+			    AdminFormElement::text('url','URL')->required(),
+			    AdminFormElement::number('weight','weight')->required()
+		    ]
+	    );
     }
 
     /**

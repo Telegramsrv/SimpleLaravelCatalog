@@ -2,6 +2,11 @@
 
 namespace App\Http\Sections;
 
+use AdminColumn;
+use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
+use AdminColumnEditable;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
@@ -25,7 +30,7 @@ class Slider extends Section
     /**
      * @var string
      */
-    protected $title;
+    protected $title = 'Slider';
 
     /**
      * @var string
@@ -37,7 +42,15 @@ class Slider extends Section
      */
     public function onDisplay()
     {
-        // todo: remove if unused
+	    $display = AdminDisplay::table()
+	                           ->setHtmlAttribute('class', 'table-primary');
+	    $display->setColumns(
+		    AdminColumn::text('url', 'URL')->setWidth('50px'),
+		    AdminColumn::text('weight', 'weight')->setWidth('10px'),
+		    AdminColumn::image('image', 'image')->setWidth('100px'),
+		    AdminColumnEditable::checkbox('available','Available')->setWidth('50px')
+	    );
+	    return $display;
     }
 
     /**
@@ -47,7 +60,16 @@ class Slider extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+	    return AdminForm::panel()->addBody(
+		    [
+		    	AdminFormElement::text('url','URL')->required(),
+			    AdminFormElement::number('weight','weight')->required(),
+			    AdminFormElement::checkbox('available','Available'),
+			    AdminFormElement::image('image','image')->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
+				    return 'upload/sliders/'; // public/files
+			    })
+		    ]
+	    );
     }
 
     /**
