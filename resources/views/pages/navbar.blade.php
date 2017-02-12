@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav">
 
                         @foreach($menu as $navbar)
-                            <li><a href="{{$navbar->url}}">{{$navbar->name}}</a></li>
+                            <li><a href="{{ route('page.get',['slug' => $navbar->url]) }}">{{$navbar->name}}</a></li>
                         @endforeach
 
                     </ul>
