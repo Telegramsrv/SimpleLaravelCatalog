@@ -2,6 +2,11 @@
 
 namespace App\Http\Sections;
 
+use AdminColumn;
+use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
+use AdminColumnEditable;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
@@ -25,7 +30,7 @@ class Users extends Section
     /**
      * @var string
      */
-    protected $title;
+    protected $title = 'Users';
 
     /**
      * @var string
@@ -37,7 +42,13 @@ class Users extends Section
      */
     public function onDisplay()
     {
-        // todo: remove if unused
+	    $display = AdminDisplay::table()
+	                           ->setHtmlAttribute('class', 'table-primary');
+	    $display->setColumns(
+		    AdminColumn::text('name', 'Name'),
+		    AdminColumn::text('email', 'Email')->setWidth('250px')
+	    );
+	    return $display;
     }
 
     /**
@@ -47,7 +58,13 @@ class Users extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+	    return AdminForm::panel()->addBody(
+		    [
+			    AdminFormElement::text('name', 'Username')->required(),
+			    AdminFormElement::text('email', 'Email')->required(),
+			    AdminFormElement::password('password', 'Password')->required()->addValidationRule('min:6'),
+		    ]
+	    );
     }
 
     /**

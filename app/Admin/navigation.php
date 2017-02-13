@@ -62,6 +62,11 @@ return [
         ]
     ],
 
+    [
+    	'title' => 'Users',
+        'model' => \App\User::class
+    ]//logout
+
     // Examples
     // [
     //    'title' => 'Content',

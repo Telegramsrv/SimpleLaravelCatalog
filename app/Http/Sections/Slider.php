@@ -67,7 +67,7 @@ class Slider extends Section
 			    AdminFormElement::checkbox('available','Available'),
 			    AdminFormElement::image('image','image')
 				    ->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
-				        return 'upload/sliders/'; // public/files
+				        return 'upload/sliders'; // public/files
 			    })
 				    ->setUploadSettings([
                         'resize' => [1280, null, function ($constraint) {
