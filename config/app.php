@@ -179,6 +179,8 @@ return [
 
         SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        Intervention\Image\ImageServiceProvider::class
+
     ],
 
     /*
@@ -230,6 +232,7 @@ return [
 
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

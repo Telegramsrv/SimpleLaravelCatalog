@@ -10,7 +10,7 @@
 
             <div class="col-md-3">
                 <a href="{{ route('product.slug',['slug' => $item->slug]) }}">
-                    <img src="/uploads/products/{{$item->image}}">
+                    <img src="/{{$item->image}}">
                     <p>{{$item->name}}</p>
                 </a>
             </div>

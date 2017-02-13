@@ -65,9 +65,17 @@ class Slider extends Section
 		    	AdminFormElement::text('url','URL')->required(),
 			    AdminFormElement::number('weight','weight')->required(),
 			    AdminFormElement::checkbox('available','Available'),
-			    AdminFormElement::image('image','image')->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
-				    return 'upload/sliders/'; // public/files
+			    AdminFormElement::image('image','image')
+				    ->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
+				        return 'upload/sliders/'; // public/files
 			    })
+				    ->setUploadSettings([
+                        'resize' => [1280, null, function ($constraint) {
+	                        $constraint->upsize();
+	                        $constraint->aspectRatio();
+                        }]
+                    ]
+				    )
 		    ]
 	    );
     }

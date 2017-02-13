@@ -7,10 +7,10 @@
 @section('content')
 
     <div class="col-md-4">
-        <img src="/uploads/product/medium/{{$product->image}}" />
+        <img src="/{{$product->image}}" />
 
         @foreach($product->getGalery() as $galery)
-            <img src="/uploads/gallery/small/{{$galery->name}}">
+            <img src="/{{$galery->image}}">
         @endforeach
 
     </div>

@@ -63,10 +63,17 @@ class Gallery extends Section
 		    [
 			    AdminFormElement::number('weight','weight')->required(),
 			    AdminFormElement::select('product_id', 'Product', Product::class)->setDisplay('name'),
-			    AdminFormElement::textarea('description','Description'),
-			    AdminFormElement::image('image','image')->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
-				    return 'upload/gallery/'; // public/files
+			    AdminFormElement::image('image','image')
+				    ->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
+				        return 'upload/galleries'; // public/files
 			    })
+				    ->setUploadSettings([
+                        'resize' => [800, null, function ($constraint) {
+	                        $constraint->upsize();
+	                        $constraint->aspectRatio();
+                        }]
+                    ]
+				    )
 		    ]
 	    );
     }

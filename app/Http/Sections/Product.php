@@ -71,9 +71,16 @@ class Product extends Section
 			    AdminFormElement::checkbox('available','Available'),
 			    AdminFormElement::select('category_id', 'Category', Category::class)->setDisplay('name'),
 			    AdminFormElement::textarea('description','Description'),
-			    AdminFormElement::image('image','image')->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
-				    return 'upload/products/'; // public/files
+			    AdminFormElement::image('image','Image')->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
+				    return 'upload/products'; // public/files
 			    })
+                ->setUploadSettings([
+                    'resize' => [800, null, function ($constraint) {
+                        $constraint->upsize();
+                        $constraint->aspectRatio();
+                    }]
+                                    ]
+                )
 		    ]
 	    );
     }
