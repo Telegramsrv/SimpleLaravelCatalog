@@ -12,17 +12,19 @@
 */
 
 
+Auth::routes();
+
 Route::get('/', [
 	'as' => 'page.index',
 	'uses' =>'PageController@Index'
 ]);
 
-Route::get('/catalog', [
+Route::get('/categories', [
 	'as' => 'catalog.index',
 	'uses' =>'CatalogController@index'
 ]);
 
-Route::get('/catalog/{slug}', [
+Route::get('/category/{slug}', [
 	'as' => 'catalog.slug',
 	'uses' =>'CatalogController@listPorudcts'
 ]);
@@ -47,7 +49,7 @@ Route::get('/news/{slug}', [
     'uses' => 'NewsController@getSingleNews'
 ]);
 
-Route::get('/{slug}', [
+Route::get('/page/{slug}', [
 	'as' => 'page.get',
 	'uses' =>'PageController@getPage'
-])->where('slug', '^(?!admin.*?).*');
+]);
