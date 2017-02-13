@@ -50,4 +50,4 @@ Route::get('/news/{slug}', [
 Route::get('/{slug}', [
 	'as' => 'page.get',
 	'uses' =>'PageController@getPage'
-])->where('slug', '^(?!admin.*$).*');
+])->where('slug', '^(?!admin.*?).*');
