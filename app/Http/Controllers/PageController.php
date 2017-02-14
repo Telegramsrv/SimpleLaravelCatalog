@@ -8,7 +8,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\News;
+use App\Product;
+use App\Slider;
 use App\Page;
 
 class PageController extends MainController
@@ -19,8 +21,11 @@ class PageController extends MainController
 		return view('pages.single',$this->data);
 	}
 
-	public function Index()
+	public function Index(Slider $slider,Product $product,News $news)
 	{
-		//TODO create index Page
+		$this->data['sliders'] = $slider->getSlider();
+		$this->data['products'] = $product->getTopRated(6);
+		$this->data['news'] = $news->getLastNews(5);
+		return view('pages.index',$this->data);
 	}
 }

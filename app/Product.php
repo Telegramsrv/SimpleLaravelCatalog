@@ -47,4 +47,9 @@ class Product extends Model
 	{
 		return $this->review()->get();
 	}
+
+	public function getTopRated($count)
+	{
+		return $this->available()->orderBy('weight')->get()->take($count);
+	}
 }

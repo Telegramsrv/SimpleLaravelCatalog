@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <h2>{{ $article->title }}</h2>
         <p>{!! $article->body !!}</p>
-        <a href="{{ route('news.slug',['slug' => $article->slug]) }}">Подробнее...</a>
+        <a href="{{ route('news.slug',['slug' => $article->slug]) }}">Read more...</a>
     </div>
 
 @endforeach
