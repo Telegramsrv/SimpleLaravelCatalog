@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+	    $widgetsRegistry = $this->app[\SleepingOwl\Admin\Contracts\Widgets\WidgetsRegistryInterface::class];
+
+	    foreach ($this->widgets as $widget) {
+		    $widgetsRegistry->registerWidget($widget);
+	    }
     }
 
     /**
@@ -25,4 +29,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+    protected $widgets = [
+        \App\Widgets\NavigationUserBlock::class,
+    ];
+
+
 }
