@@ -17,7 +17,28 @@
                     <ul class="nav navbar-nav">
 
                         @foreach($menu as $navbar)
-                            <li><a href="{{ route('page.get',['slug' => $navbar->url]) }}">{{$navbar->name}}</a></li>
+
+                            @if ($navbar->isParent())
+
+                                <li class="dropdown">
+                                    <a href="{{$navbar->url}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$navbar->name}} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        @foreach($navbar->childs() as $navcat)
+                                            <li><a href="{{ $navcat->url }}">{{$navcat->name}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+
+                                @else
+
+                                @if(!$navbar->isChild())
+
+                                    <li><a href="{{ $navbar->url }}">{{$navbar->name}}</a></li>
+
+                                @endif
+
+                            @endif
+
                         @endforeach
 
                     </ul>

@@ -41,12 +41,13 @@ class Menu extends Section
      */
     public function onDisplay()
     {
-	    $display = AdminDisplay::table()
+	    $display = AdminDisplay::datatables()->with('parent')
 	                           ->setHtmlAttribute('class', 'table-primary');
 	    $display->setColumns(
 		    AdminColumn::text('name','Name'),
 		    AdminColumn::text('url', 'URL')->setWidth('100px'),
-		    AdminColumn::text('weight', 'weight')->setWidth('50px')
+		    AdminColumn::text('weight', 'weight')->setWidth('50px'),
+		    AdminColumn::text('parent.name','Parent')->setWidth('100px')
 	    );
 	    return $display;
     }
@@ -62,7 +63,8 @@ class Menu extends Section
 		    [
 			    AdminFormElement::text('name','Name')->required(),
 			    AdminFormElement::text('url','URL')->required(),
-			    AdminFormElement::number('weight','weight')->required()
+			    AdminFormElement::number('weight','weight')->required(),
+			    AdminFormElement::select('parent_id', 'Parent', \App\Menu::class)->setDisplay('name')->nullable()
 		    ]
 	    );
     }
